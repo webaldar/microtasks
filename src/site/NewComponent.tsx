@@ -1,31 +1,30 @@
 import React from 'react';
+import {FilterType} from "../App";
 
-type StudentsType = {
-    id: number
-    name: string
-    age: number
-}
 type NewComponentType = {
-    students: Array<StudentsType>
+    onClickFilterHandler: ()=>void
 }
-export const NewComponent = (props: NewComponentType) => {
-    const topCars = [
-        {manufacturer:'BMW', model:'m5cs'},
-        {manufacturer:'Mercedes', model:'e63s'},
-        {manufacturer:'Audi', model:'rs6'}
-    ]
+
+export const NewComponent = (props: FilterType, NewComponentType) => {
     return (
-        <table>
-            {topCars.map((auto, index)=>{
-                return(
-                    <tr>
-                        <td>{index + 1}</td>
-                        <td>{auto.manufacturer}</td>
-                        <td>{auto.model}</td>
-                    </tr>
-                )
-            })}
-        </table>
+        <>
+            <ul>
+                {currentMoney.map((objFromMoneyArr, index) => {
+                    return (
+                        <li key={index}>
+                            <span>{objFromMoneyArr.banknots}</span>
+                            <span>{objFromMoneyArr.value}</span>
+                            <span>{objFromMoneyArr.number}</span>
+                        </li>
+                    )
+                })}
+            </ul>
+            <div>
+                <button onClick={() => onClickFilterHandler('all')}>All</button>
+                <button onClick={() => onClickFilterHandler('ruble')}>Ruble</button>
+                <button onClick={() => onClickFilterHandler('dollar')}>Dollar</button>
+            </div>
+        </>
     );
 };
 
