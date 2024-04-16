@@ -3,7 +3,8 @@ import './App.css';
 import {Button} from "./site/Button";
 import {NewComponent} from "./site/NewComponent";
 
-export type FilterType= 'all' | 'ruble' | 'dollar'
+export type FilterType = 'all' | 'ruble' | 'dollar'
+
 function App() {
     const [money, setMoney] = useState([
         {banknots: 'Dollars', value: 100, number: ' a1234567890'},
@@ -16,25 +17,25 @@ function App() {
         {banknots: 'RUBLS', value: 50, number: ' v1234567890'},
     ])
 
-    const [filter, setfilter]= useState<FilterType>('all')
+    const [filter, setfilter] = useState<FilterType>('all')
 
     let currentMoney = money
 
     if (filter === 'ruble') {
         currentMoney = money.filter((filteredMoney) => filteredMoney.banknots === 'RUBLS')
     }
-    if (filter === 'dollar'){
+    if (filter === 'dollar') {
         currentMoney = money.filter((filteredMoney) => filteredMoney.banknots === 'Dollars')
     }
     const onClickFilterHandler = (NameButton: FilterType) => {
         setfilter(NameButton)
-        console.log(NameButton)
-
     }
 
     return (
-        <NewComponent onClickFilterHandler={'all'}/>
-    );
+        <NewComponent onClickFilterHandler={onClickFilterHandler}
+                      currentMoney={currentMoney}
+        />
+    )
 }
 
 export default App;

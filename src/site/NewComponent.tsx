@@ -1,11 +1,17 @@
 import React from 'react';
 import {FilterType} from "../App";
 
+type currentMoneyType = {
+    banknots: string
+    value: number
+    number: string
+}
 type NewComponentType = {
-    onClickFilterHandler: ()=>void
+    onClickFilterHandler: (filter: FilterType)=>void
+    currentMoney: Array<currentMoneyType>
 }
 
-export const NewComponent = (props: FilterType, NewComponentType) => {
+export const NewComponent = ({onClickFilterHandler, currentMoney}:  NewComponentType) => {
     return (
         <>
             <ul>
